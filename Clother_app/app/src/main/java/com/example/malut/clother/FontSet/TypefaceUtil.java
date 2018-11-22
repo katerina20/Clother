@@ -1,7 +1,7 @@
 package com.example.malut.clother.FontSet;
+
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import java.lang.reflect.Field;
 
 public class TypefaceUtil {
@@ -11,8 +11,6 @@ public class TypefaceUtil {
             final Field defaultFontTypefaceField = Typeface.class.getDeclaredField(defaultFontNameToOverride);
             defaultFontTypefaceField.setAccessible(true);
             defaultFontTypefaceField.set(null, customFontTypeface);
-        } catch (Exception e) {
-            //Log.e("Can not set custom font " + customFontFileNameInAssets + " instead of " + defaultFontNameToOverride);
-        }
+        } catch (Exception e) {}
     }
 }

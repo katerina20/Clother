@@ -6,7 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:typeface">serif</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="Divider_invisible">
+        <item name="android:layout_width">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ffff</item>
     </style>
 
 </resources>
