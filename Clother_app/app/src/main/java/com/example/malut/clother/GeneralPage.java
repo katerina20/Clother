@@ -29,7 +29,8 @@ public class GeneralPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GeneralPage.this, MainActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+                overridePendingTransition(R.anim.bottom_in,R.anim.top_out);
             }
         });
 
