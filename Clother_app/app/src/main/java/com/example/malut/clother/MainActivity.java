@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         TableRow rowLine = new TableRow(this);
         TableRow rowPrecip = new TableRow(this);
         int pad = 0;
+        LinearLayout.LayoutParams paramsIcon = new LinearLayout.LayoutParams (120, 120);
+        paramsIcon.setMargins(15, 0, 15, 0);
+        RelativeLayout.LayoutParams paramsForHumidity = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
+                LayoutParams.WRAP_CONTENT);
+
 
         for (int i = 0; i < DATAHOURLY; i++){
 
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             layoutIconTemp.setOrientation(LinearLayout.VERTICAL);
 
             ImageView icon = new ImageView(this);
+            icon.setLayoutParams(paramsIcon);
             icon.setImageResource(R.drawable.clear_day);
 
             TextView temp = new TextView(this);
@@ -84,13 +90,11 @@ public class MainActivity extends AppCompatActivity {
             precip.setGravity(Gravity.CENTER);
 
             RelativeLayout relativeLayoutHumidity = new RelativeLayout(this);
-            RelativeLayout.LayoutParams paramsForHumidity = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
-                    LayoutParams.WRAP_CONTENT);
-            RelativeLayout.LayoutParams paramsForHumidityNum = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
-                    LayoutParams.WRAP_CONTENT);
+
 
 
             LinearLayout viewHumidity = new LinearLayout(this);
+
             LinearLayout.LayoutParams paramsWater = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.WRAP_CONTENT, 100);
 
             View viewWater = new View(this);
@@ -104,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             paramsForHumidity.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             paramsForHumidity.addRule(RelativeLayout.CENTER_IN_PARENT);
             viewHumidity.setLayoutParams(paramsForHumidity);
-            precip.setLayoutParams(paramsForHumidityNum);
+            precip.setLayoutParams(paramsForHumidity);
 
             relativeLayoutHumidity.addView(viewHumidity);
             relativeLayoutHumidity.addView(precip);
@@ -134,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         line.setScaleType(ImageView.ScaleType.FIT_XY);
         line.setLayoutParams(paramsForLine);
 
+        rowData.removeViewAt(47);
+        rowPrecip.removeViewAt(47);
+
         rowLine.addView(line);
         full_table.addView(rowData);
         full_table.addView(rowLine);
@@ -148,13 +155,16 @@ public class MainActivity extends AppCompatActivity {
         TableRow rowDay = new TableRow(this);
         TableRow rowIconTemp = new TableRow(this);
 
+        TableRow.LayoutParams paramsForDay = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams paramsIcon = new LinearLayout.LayoutParams (120, 120);
+        paramsIcon.setMargins(30, 0, 30, 0);
 
         for (int i = 0; i < DATADAYLY; i++){
 
             TextView dayLabel = new TextView(this);
             dayLabel.setText("Mon");
             dayLabel.setGravity(Gravity.CENTER);
-            TableRow.LayoutParams paramsForDay = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+
             paramsForDay.span = 2;
 
             dayLabel.setLayoutParams(paramsForDay);
@@ -163,8 +173,10 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout layoutIconTemp = new LinearLayout(this);
             layoutIconTemp.setOrientation(LinearLayout.VERTICAL);
 
+
             ImageView icon = new ImageView(this);
             icon.setImageResource(R.drawable.clear_day);
+            icon.setLayoutParams(paramsIcon);
 
             TextView temp = new TextView(this);
             temp.setText(" 22↑ 20↓");
@@ -177,8 +189,9 @@ public class MainActivity extends AppCompatActivity {
             layoutIconTemp.addView(temp);
             rowIconTemp.addView(layoutIconTemp);
             rowIconTemp.addView(divider);
-
         }
+
+        rowIconTemp.removeViewAt(13);
 
         full_table.addView(rowDay);
         full_table.addView(rowIconTemp);
