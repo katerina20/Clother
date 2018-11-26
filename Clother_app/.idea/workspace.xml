@@ -136,8 +136,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+            <state relative-caret-position="1496">
+              <caret line="187" column="41" lean-forward="true" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2457,9 +2457,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="width" value="1522" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-2" />
+    <option name="width" value="1388" />
     <option name="height" value="1932" />
   </component>
   <component name="ProjectView">
@@ -2724,7 +2724,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="0" width="745" height="966" extended-state="0" />
+    <frame x="-5" y="0" width="694" height="966" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="1" />
@@ -2742,9 +2742,9 @@
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.29694322" />
-      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49965635" visible="true" weight="0.22623345" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.32972324" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.19025157" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49965635" weight="0.22623345" />
+      <window_info anchor="bottom" id="Find" order="7" visible="true" weight="0.32972324" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="2" side_tool="true" />
@@ -3067,8 +3067,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+        <state relative-caret-position="1496">
+          <caret line="187" column="41" lean-forward="true" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

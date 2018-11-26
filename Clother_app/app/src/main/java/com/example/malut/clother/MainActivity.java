@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
             layoutIconTemp.addView(temp);
             rowIconTemp.addView(layoutIconTemp);
             rowIconTemp.addView(divider);
-
         }
 
         rowIconTemp.removeViewAt(13);
