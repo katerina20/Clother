@@ -1,6 +1,7 @@
 package com.example.malut.clother;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
@@ -20,16 +21,25 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import com.example.malut.clother.FontSet.TypefaceUtil;
+import com.example.malut.clother.Model.DarkSkyWeather;
+import com.example.malut.clother.Model.Hourly.DataForDay;
+import com.example.malut.clother.Model.Hourly.Hourly;
+import com.example.malut.clother.Services.RequestData;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static int DATAHOURLY = 24;
     public final static int DATADAYLY = 7;
+    public DarkSkyWeather darkSkyWeather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        darkSkyWeather = (DarkSkyWeather) intent.getExtras().getSerializable("weather");
 
         hourly_weather_table();
 
@@ -41,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         TableLayout full_table = (TableLayout) findViewById(R.id.full_table_hourly);
 
+        List<DataForDay> data = darkSkyWeather.getHourly().getDataHourlyList();
 
 
         TableRow rowData = new TableRow(this);
@@ -55,24 +66,28 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < DATAHOURLY; i++){
 
+            DataForDay weather = data.get(i);
             pad += 5;
             LinearLayout layoutData = new LinearLayout(this);
             layoutData.setOrientation(LinearLayout.VERTICAL);
 
             TextView hourLabel = new TextView(this);
-            hourLabel.setText("09:00");
+            hourLabel.setText(RequestData.unixTimeStampToTime(data.get(i).getTime()));
             hourLabel.setGravity(Gravity.CENTER);
 
 
             LinearLayout layoutIconTemp = new LinearLayout(this);
             layoutIconTemp.setOrientation(LinearLayout.VERTICAL);
 
+            String icon_name = weather.getIcon();
+            icon_name = icon_name.replace('-', '_');
+            int resId  = getResources().getIdentifier(icon_name , "drawable", getPackageName());
+
             ImageView icon = new ImageView(this);
             icon.setLayoutParams(paramsIcon);
-            icon.setImageResource(R.drawable.clear_day);
-
+            icon.setImageResource(resId);
             TextView temp = new TextView(this);
-            temp.setText("22°");
+            temp.setText(String.format("%.0f°", weather.getTemperature()));
             temp.setGravity(Gravity.CENTER);
 
             layoutIconTemp.addView(icon);
@@ -86,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             //Humidity
 
             TextView precip = new TextView(this);
-            precip.setText("20%");
+
             precip.setGravity(Gravity.CENTER);
 
             RelativeLayout relativeLayoutHumidity = new RelativeLayout(this);
@@ -95,7 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
             LinearLayout viewHumidity = new LinearLayout(this);
 
-            LinearLayout.LayoutParams paramsWater = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.WRAP_CONTENT, 100);
+            double prec_d = weather.getPrecipProbability() * 100;
+            int prec = (int)prec_d;
+            if (prec == 0)
+                prec = 5;
+            precip.setText(String.format("%.0f°", prec_d));
+            LinearLayout.LayoutParams paramsWater = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.WRAP_CONTENT, prec);
 
             View viewWater = new View(this);
             viewWater.setBackgroundColor(ContextCompat.getColor(this, R.color.colorHumidity));
@@ -196,7 +216,5 @@ public class MainActivity extends AppCompatActivity {
         full_table.addView(rowDay);
         full_table.addView(rowIconTemp);
     }
-
-
 
 }

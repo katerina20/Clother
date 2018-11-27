@@ -4,29 +4,38 @@ import com.example.malut.clother.Model.Currently.Currently;
 import com.example.malut.clother.Model.Daily.Daily;
 import com.example.malut.clother.Model.Hourly.Hourly;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DarkSkyWeather {
+public class DarkSkyWeather implements Serializable {
 
+    private double latitude;
+    private double longitude;
     private Currently currently;
-    private List<Daily> dailies;
-    private List<Hourly> hourlies;
+    private Daily daily;
+    private Hourly hourly;
 
-    public DarkSkyWeather(Currently currently, List<Daily> dailies, List<Hourly> hourlies) {
-        this.currently = currently;
-        this.dailies = dailies;
-        this.hourlies = hourlies;
+    public DarkSkyWeather() {
+
     }
 
     public Currently getCurrently() {
         return currently;
     }
 
-    public List<Daily> getDailies() {
-        return dailies;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public List<Hourly> getHourlies() {
-        return hourlies;
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public Daily getDaily() {
+        return daily;
+    }
+
+    public Hourly getHourly() {
+        return hourly;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.malut.clother.Model.Daily;
 
-public class DataForWeek {
+import java.io.Serializable;
+
+public class DataForWeek implements Serializable {
 
     private double time;
     private String icon;
@@ -35,10 +37,10 @@ public class DataForWeek {
     }
 
     public double getTemperatureHigh() {
-        return temperatureHigh;
+        return (int)temperatureHigh;
     }
 
     public double getTemperatureLow() {
-        return temperatureLow;
+        return (int)temperatureLow;
     }
 }

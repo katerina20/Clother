@@ -1,6 +1,8 @@
 package com.example.malut.clother.Model.Hourly;
 
-public class DataForDay {
+import java.io.Serializable;
+
+public class DataForDay implements Serializable {
 
     private double time;
     private String icon;
@@ -25,7 +27,7 @@ public class DataForDay {
     }
 
     public double getTemperature() {
-        return temperature;
+        return (int)temperature;
     }
 
     public double getApparentTemperature() {
