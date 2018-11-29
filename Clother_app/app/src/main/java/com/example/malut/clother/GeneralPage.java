@@ -32,7 +32,11 @@ public class GeneralPage extends AppCompatActivity {
 
     private ImageButton secondPage;
     private TextView temperature;
-    private ImageView icon_main;
+    private ImageView iconMain;
+    private TextView temperatureApp;
+    private TextView precipText;
+    private TextView cityNameView;
+    String cityName;
 
     double lat = 46.4288699298;
     double lng = 30.7232187;
@@ -47,12 +51,19 @@ public class GeneralPage extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_general_page);
-        TypefaceUtil.overrideFont(getApplicationContext(), "SANS_SERIF", "fonts/anaheim.ttf");
 
+        TypefaceUtil.overrideFont(getApplicationContext(), "SANS_SERIF", "fonts/anaheim.ttf");
+        setContentView(R.layout.activity_general_page);
         //Control
         temperature = (TextView) findViewById(R.id.temp);
-        icon_main = (ImageView) findViewById(R.id.icon_main);
+        iconMain = (ImageView) findViewById(R.id.icon_main);
+        temperatureApp = (TextView) findViewById(R.id.app_temp_gen);
+        precipText = (TextView) findViewById(R.id.precip_gen);
+        cityNameView = (TextView) findViewById(R.id.city_name_gen);
+
+        cityName = RequestData.coordinatesToCity(lat, lng, this);
+
+        cityNameView.setText(cityName);
 
         secondPage = findViewById(R.id.movePage);
         secondPage.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +71,7 @@ public class GeneralPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GeneralPage.this, MainActivity.class);
                 intent.putExtra("weather", darkSkyWeather);
+                intent.putExtra("city", cityName);
                 startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.bottom_in, R.anim.top_out);
             }
@@ -94,8 +106,11 @@ public class GeneralPage extends AppCompatActivity {
             Type mType = new TypeToken<DarkSkyWeather>(){}.getType();
             darkSkyWeather = gson.fromJson(s, mType);
             pd.dismiss();
-            temperature.setText(String.format("%.0f°", darkSkyWeather.getCurrently().getTemperature()));
+            temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()) + "°" );
             setMainIcon(darkSkyWeather.getCurrently().getIcon());
+            temperatureApp.setText(String.valueOf(darkSkyWeather.getCurrently().getApparentTemperature() + "°"));
+
+            precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
 
         }
 
@@ -121,8 +136,6 @@ public class GeneralPage extends AppCompatActivity {
 
         String icon = s.replace('-', '_');
         int resId = getResources().getIdentifier(icon , "drawable", getPackageName());
-        icon_main.setImageResource(resId);
-
-
+        iconMain.setImageResource(resId);
     }
 }

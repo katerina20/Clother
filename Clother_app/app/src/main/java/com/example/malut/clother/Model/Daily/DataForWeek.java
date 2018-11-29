@@ -36,11 +36,11 @@ public class DataForWeek implements Serializable {
         return sunsetTime;
     }
 
-    public double getTemperatureHigh() {
+    public int getTemperatureHigh() {
         return (int)temperatureHigh;
     }
 
-    public double getTemperatureLow() {
+    public int getTemperatureLow() {
         return (int)temperatureLow;
     }
 }

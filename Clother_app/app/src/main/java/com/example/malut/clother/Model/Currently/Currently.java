@@ -38,16 +38,16 @@ public class Currently implements Serializable {
         return icon;
     }
 
-    public double getPrecipProbability() {
-        return precipProbability;
+    public int getPrecipProbability() {
+        return (int)precipProbability;
     }
 
-    public double getTemperature() {
+    public int getTemperature() {
         return (int)temperature;
     }
 
-    public double getApparentTemperature() {
-        return apparentTemperature;
+    public int getApparentTemperature() {
+        return (int)apparentTemperature;
     }
 
     public double getHumidity() {

@@ -26,12 +26,12 @@ public class DataForDay implements Serializable {
         return icon;
     }
 
-    public double getTemperature() {
+    public int getTemperature() {
         return (int)temperature;
     }
 
-    public double getApparentTemperature() {
-        return apparentTemperature;
+    public int getApparentTemperature() {
+        return (int)apparentTemperature;
     }
 
     public double getPrecipProbability() {
