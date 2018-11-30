@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.malut.clother.FontSet.TypefaceUtil;
@@ -30,6 +31,7 @@ import java.lang.reflect.Type;
 
 public class GeneralPage extends AppCompatActivity {
 
+    private LinearLayout ll;
     private ImageButton secondPage;
     private TextView temperature;
     private ImageView iconMain;
@@ -60,6 +62,7 @@ public class GeneralPage extends AppCompatActivity {
         temperatureApp = (TextView) findViewById(R.id.app_temp_gen);
         precipText = (TextView) findViewById(R.id.precip_gen);
         cityNameView = (TextView) findViewById(R.id.city_name_gen);
+        ll = (LinearLayout) findViewById(R.id.Layout);
 
         cityName = RequestData.coordinatesToCity(lat, lng, this);
 
@@ -109,7 +112,8 @@ public class GeneralPage extends AppCompatActivity {
             temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()) + "°" );
             setMainIcon(darkSkyWeather.getCurrently().getIcon());
             temperatureApp.setText(String.valueOf(darkSkyWeather.getCurrently().getApparentTemperature() + "°"));
-
+            int pic = getBackgroundPic(darkSkyWeather.getCurrently().getIcon());
+            ll.setBackgroundResource(pic);
             precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
 
         }
@@ -137,5 +141,53 @@ public class GeneralPage extends AppCompatActivity {
         String icon = s.replace('-', '_');
         int resId = getResources().getIdentifier(icon , "drawable", getPackageName());
         iconMain.setImageResource(resId);
+    }
+
+    private int getBackgroundPic (String s){
+
+        String back_image = "";
+        if (s == "clear-day"){
+            back_image = "clear_day_back";
+        }
+        else if (s.equals("clear-night")){
+            back_image = "clear_night_back";
+        }
+        else if (s.equals("cloudy")){
+            back_image = "cloudy_night_back";
+        }
+        else if (s.equals("fog")){
+            back_image = "fog_back";
+        }
+        else if (s.equals("partly-cloudy-day")){
+            back_image = "cloudy_day_back";
+        }
+        else if (s.equals("partly-cloudy-night")){
+            back_image = "cloudy_night_back";
+        }
+        else if (s.equals("rain")){
+            back_image = "rain_back";
+        }
+        else if (s.equals("sleet")){
+            back_image = "rain_back";
+        }
+        else if (s.equals("snow")){
+            back_image = "snow_back";
+        }
+        else if (s.equals("wind")){
+            back_image = "cloudy_day_back";
+        }
+        else if (s.equals("hail")){
+            back_image = "rain_back";
+        }
+        else if (s.equals("thunderstorm")){
+            back_image = "rain_back";
+        }
+        else if (s.equals("tornado")){
+            back_image = "tornado";
+        }
+
+        int resId = getResources().getIdentifier(back_image, "drawable", getPackageName());;
+
+        return resId;
     }
 }

@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sunny_background"
-    tools:context=".GeneralPage">
+    tools:context=".GeneralPage"
+    android:background="@drawable/default_back"
+    android:id="@+id/Layout">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:background="@color/colorGeneralTop"
         >
-
-        <ImageView
+        <!--<ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
             android:scaleType="fitXY"
-            android:src="@drawable/rectangle" />
+            android:src="@drawable/rectangle" />-->
 
         <ImageView
             android:id="@+id/icon_main"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="80sp"
+            android:textColor="@color/textColor"
             android:layout_marginTop="0dp"
             android:layout_toLeftOf="@+id/icon_main"
             />
@@ -52,26 +54,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:orientation="vertical"
             android:layout_toRightOf="@+id/icon_main">
 
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/city_name_gen"
                 android:layout_width="match_parent"
+                android:textColor="@color/textColor"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:textSize="30sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -81,7 +86,9 @@
 
                     <TextView
                         android:id="@+id/app_temp_gen"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/textColor"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"/>
 
@@ -89,7 +96,8 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -98,32 +106,18 @@
 
                     <TextView
                         android:id="@+id/precip_gen"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/textColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"/>
 
                 </LinearLayout>
 
-
-
-
-
-
-
-
             </LinearLayout>
-
 
         </LinearLayout>
 
-
-
-
-
     </RelativeLayout>
-
-
-
-
 
 </LinearLayout>

@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         sunset.setText(RequestData.unixTimeStampToTime(darkSkyWeather.getDaily().getDataHourlyList().get(0).getSunsetTime()));
         windSpeed.setText(String.valueOf(darkSkyWeather.getCurrently().getWindSpeed()) + " mph");
         humidity.setText(String.valueOf((int)(darkSkyWeather.getCurrently().getHumidity() * 100)) + "%");
-        pressure.setText(String.valueOf(darkSkyWeather.getCurrently().getPressure()) + " mb ");
+        pressure.setText(String.valueOf(darkSkyWeather.getCurrently().getPressure()) + " mb");
 
 //        Locale aLocale = new Builder().setLanguage("en").setScript("Latn").setRegion("RS").build();
 
@@ -115,21 +115,10 @@ public class MainActivity extends AppCompatActivity {
         int pad = 0;
         LinearLayout.LayoutParams paramsIcon = new LinearLayout.LayoutParams (120, 120);
         paramsIcon.setMargins(15, 0, 15, 0);
-        RelativeLayout.LayoutParams paramsForHumidity = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
-                LayoutParams.WRAP_CONTENT);
+
         RelativeLayout.LayoutParams paramsForHumidityText = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT);
 
-//        int min = data.get(1).getTemperature();
-//        int max = data.get(1).getTemperature();
-
-//        for (int i = 2; i < DATAHOURLY + 1; i++){
-//
-//            if(min > data.get(i).getTemperature())
-//                min = data.get(i).getTemperature();
-//            if(max < data.get(i).getTemperature())
-//                max = data.get(i).getTemperature();
-//        }
 
         int arr [] = new int[DATAHOURLY];
         for (int i = 1; i < DATAHOURLY + 1; i++){
@@ -152,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        for (int i = 1; i < DATAHOURLY+1; i++){
+
+        for (int i = 1; i < DATAHOURLY + 1; i++){
 
             DataForDay weather = data.get(i);
             pad += 5;
@@ -213,10 +203,15 @@ public class MainActivity extends AppCompatActivity {
             int prec = (int)prec_d;
             precip.setText(String.valueOf(prec) + "%");
 
-            if (prec < 4)
-                prec = 3;
+//            if (prec < 4) {
+//                prec = 3;
+//            }
 
-            LinearLayout.LayoutParams paramsWater = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.WRAP_CONTENT, prec);
+            if (prec == 0){
+
+                prec = 1;
+            }
+            LinearLayout.LayoutParams paramsWater = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.MATCH_PARENT, prec);
             paramsWater.gravity = Gravity.BOTTOM;
 
             View viewWater = new View(this);
@@ -225,7 +220,8 @@ public class MainActivity extends AppCompatActivity {
             viewWater.setLayoutParams(paramsWater);
 
             viewHumidity.addView(viewWater);
-
+            RelativeLayout.LayoutParams paramsForHumidity = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT);
 
             paramsForHumidity.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             paramsForHumidityText.addRule(RelativeLayout.CENTER_IN_PARENT);
@@ -330,4 +326,8 @@ public class MainActivity extends AppCompatActivity {
         int resId = getResources().getIdentifier(icon , "drawable", getPackageName());
         return resId;
     }
+
+
+
+
 }

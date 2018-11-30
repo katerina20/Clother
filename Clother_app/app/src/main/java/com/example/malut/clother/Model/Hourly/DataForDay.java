@@ -34,6 +34,7 @@ public class DataForDay implements Serializable {
         return (int)apparentTemperature;
     }
 
+
     public double getPrecipProbability() {
         return precipProbability;
     }

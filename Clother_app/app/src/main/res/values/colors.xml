@@ -5,5 +5,6 @@
     <color name="colorAccent">#929292</color>
     <color name="colorBackground">#929292</color>
     <color name="colorHumidity">#70BAFE</color>
-    70BAFE
+    <color name="colorGeneralTop">#66bcbcbc</color>
+    <color name="textColor">#ffffff</color>
 </resources>
