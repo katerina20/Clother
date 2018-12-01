@@ -38,11 +38,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="RequestData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/Services/RequestData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-289">
+              <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="579">
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GeneralPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="559">
+              <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -2349,9 +2394,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
-    <option name="width" value="1522" />
+    <option name="width" value="1366" />
     <option name="height" value="1932" />
   </component>
   <component name="ProjectView">
@@ -2632,7 +2677,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="0" width="761" height="966" extended-state="0" />
+    <frame x="-6" y="-6" width="1513" height="973" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="1" />
@@ -2641,31 +2686,86 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Build Variants" order="1" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5017182" side_tool="true" weight="0.3293556" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5037594" side_tool="true" weight="0.16365825" />
       <window_info anchor="right" id="Preview" order="1" />
-      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49828178" weight="0.27326968" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" sideWeight="0.49828178" visible="true" weight="0.27088305" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32816228" />
       <window_info anchor="bottom" id="Logcat" order="4" weight="0.33174226" />
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.57575756" visible="true" weight="0.10668563" />
-      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49965635" weight="0.12529834" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.57575756" weight="0.66872853" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49624062" weight="0.16229117" />
       <window_info anchor="right" id="Gradle" order="3" />
-      <window_info active="true" id="Structure" order="5" sideWeight="0.42424244" side_tool="true" visible="true" weight="0.10668563" />
+      <window_info id="Structure" order="5" sideWeight="0.42424244" side_tool="true" weight="0.10668563" />
       <window_info anchor="right" id="Device File Explorer" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="bottom" id="Debug" order="9" visible="true" weight="0.16606498" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.44283995" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info id="Build Variants" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5017182" side_tool="true" weight="0.3293556" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.57575756" visible="true" weight="0.10668563" />
+      <window_info anchor="right" id="Preview" order="1" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Logcat" order="4" weight="0.33174226" />
+      <window_info active="true" id="Structure" order="5" sideWeight="0.42424244" side_tool="true" visible="true" weight="0.10668563" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Device File Explorer" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="9" visible="true" weight="0.16606498" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="bottom" id="Android Profiler" order="1" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="7" visible="true" weight="0.32696897" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49828178" weight="0.27326968" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49965635" weight="0.12529834" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.32816228" />
+      <window_info id="Captures" order="7" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info id="Designer" order="0" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49624062" weight="0.16229117" />
+      <window_info id="Designer" order="0" />
+      <window_info id="Build Variants" order="1" side_tool="true" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49828178" weight="0.27326968" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Android Profiler" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Captures" order="7" weight="0.25" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5037594" side_tool="true" weight="0.16365825" />
+      <window_info anchor="right" id="Preview" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="7" visible="true" weight="0.32696897" />
-    </layout>
+      <window_info anchor="right" id="Device File Explorer" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="4" weight="0.33174226" />
+      <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.32816228" />
+      <window_info anchor="right" id="Gradle" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.57575756" visible="true" weight="0.6688" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info id="Structure" order="5" sideWeight="0.42424244" side_tool="true" weight="0.10668563" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="9" visible="true" weight="0.36462092" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -2805,8 +2905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="87" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+        <state relative-caret-position="68">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
         </state>
       </provider>
       <provider editor-type-id="android-manifest">
@@ -2844,8 +2944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/Services/RequestData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+        <state relative-caret-position="-289">
+          <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2884,17 +2984,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#943#944#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="579">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2920,8 +3016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="559">
+          <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
         </state>
       </provider>
     </entry>
