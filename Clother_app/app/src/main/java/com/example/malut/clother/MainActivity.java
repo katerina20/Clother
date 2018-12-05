@@ -74,10 +74,11 @@ public class MainActivity extends AppCompatActivity {
         temperstureApp.setText("Feels like " + String.valueOf(darkSkyWeather.getCurrently().getApparentTemperature()));
         summary.setText(darkSkyWeather.getCurrently().getSummary());
         iconMain.setImageResource(getIconNum(darkSkyWeather.getCurrently().getIcon()));
+        city.setText(cityName);
 
         sunrise.setText(RequestData.unixTimeStampToTime(darkSkyWeather.getDaily().getDataHourlyList().get(0).getSunriseTime()));
         sunset.setText(RequestData.unixTimeStampToTime(darkSkyWeather.getDaily().getDataHourlyList().get(0).getSunsetTime()));
-        windSpeed.setText(String.valueOf(darkSkyWeather.getCurrently().getWindSpeed()) + " mph");
+        windSpeed.setText(String.valueOf(darkSkyWeather.getCurrently().getWindSpeed()) + " mps");
         humidity.setText(String.valueOf((int)(darkSkyWeather.getCurrently().getHumidity() * 100)) + "%");
         pressure.setText(String.valueOf(darkSkyWeather.getCurrently().getPressure()) + " mb");
 
@@ -178,7 +179,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Log.d("array", String.valueOf(new_array));
-            int heightIcon = 150  - ((150 * index) / delta) ;
+            int heightIcon;
+            if (delta == 0){
+                heightIcon = 75;
+            } else {
+                heightIcon = 150 - ((150 * index) / delta);
+            }
 
             RelativeLayout relativeLayoutIconTemp = new RelativeLayout(this);
 

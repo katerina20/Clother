@@ -68,6 +68,7 @@ public class SearchWindow extends AppCompatActivity {
                 Intent openMainActivity= new Intent(SearchWindow.this, MainActivity.class);
                 openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivityIfNeeded(openMainActivity, 0);
+                finish();
             }
         });
 
@@ -119,23 +120,21 @@ public class SearchWindow extends AppCompatActivity {
         ad.setMessage(messageD);
         ad.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
-                Toast.makeText(SearchWindow.this, city_array.get(position) + "deleted",
-                        Toast.LENGTH_LONG).show();
-                adapter.remove(city_array.get(position));
-                adapter.notifyDataSetChanged();
+
             }
         });
         ad.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
+                Toast.makeText(SearchWindow.this, city_array.get(position) + " deleted",
+                        Toast.LENGTH_LONG).show();
+                adapter.remove(city_array.get(position));
+                adapter.notifyDataSetChanged();
+//                city_array.remove(position);
+                writeFile();
             }
         });
 
-        ad.show();
-
-
     }
-
-
 
     private class GetWeather extends AsyncTask<String, Void, String> {
 
@@ -158,9 +157,10 @@ public class SearchWindow extends AppCompatActivity {
             pd.dismiss();
             Intent intent = new Intent(SearchWindow.this, MainActivity.class);
             intent.putExtra("weather", darkSkyWeather);
-            intent.putExtra("city ", "y");
+            intent.putExtra("city ", RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), SearchWindow.this));
             startActivityForResult(intent, 1);
             overridePendingTransition(R.anim.slide_inleft, R.anim.static_anim);
+            finish();
         }
 
         @Override
@@ -210,17 +210,15 @@ public class SearchWindow extends AppCompatActivity {
 
     private void writeFile(){
 
-        String[] s = {"Odesa", "Lviv", "Energodar"};
-
         try {
             // отрываем поток для записи
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                     openFileOutput(FILENAME, MODE_PRIVATE)));
             // пишем данные
 
-            for (int i = 0; i < s.length; i++) {
+            for (int i = 0; i < city_array.size(); i++) {
                 // Maybe:
-                bw.write(s[i]+"");
+                bw.write(city_array.get(i) + "");
                 bw.newLine();
             }
             // закрываем поток

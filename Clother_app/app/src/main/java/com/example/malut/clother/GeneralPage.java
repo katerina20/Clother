@@ -1,10 +1,19 @@
 package com.example.malut.clother;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Parcelable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,8 +37,10 @@ import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
-public class GeneralPage extends AppCompatActivity {
+public class GeneralPage extends AppCompatActivity implements LocationListener {
 
     private LinearLayout ll;
     private ImageButton secondPage;
@@ -39,14 +50,19 @@ public class GeneralPage extends AppCompatActivity {
     private TextView precipText;
     private TextView cityNameView;
     String cityName;
+    SharedPreferences sPref;
     private ImageView iconMan;
+    final String COORDS = "coords";
 
-    double lat = 46.4288699298;
-    double lng = 30.7232187;
+    LocationManager locationManager;
     String provider;
+    static double lat, lng;
+    int MY_PERMISSION = 0;
+
+    //    double lat = 46.4288699298;
+//    double lng = 30.7232187;
     private DarkSkyWeather darkSkyWeather = new DarkSkyWeather();
 
-    int MY_PERMISSION = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +82,9 @@ public class GeneralPage extends AppCompatActivity {
         ll = (LinearLayout) findViewById(R.id.Layout);
         iconMan = (ImageView) findViewById(R.id.man_icon_gen);
 
-        cityName = RequestData.coordinatesToCity(lat, lng, this);
+//        cityName = RequestData.coordinatesToCity(lat, lng, this);
 
-        cityNameView.setText(cityName);
+//        cityNameView.setText(cityName);
 
         secondPage = findViewById(R.id.movePage);
         secondPage.setOnClickListener(new View.OnClickListener() {
@@ -82,13 +98,90 @@ public class GeneralPage extends AppCompatActivity {
             }
         });
 
-        new GetWeather().execute(RequestData.apiRequest(String.valueOf(lat), String.valueOf(lng)));
+        //Get coordinates
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(GeneralPage.this, new String[]{
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, MY_PERMISSION);
+            return;
+        }
+        Location location = locationManager.getLastKnownLocation(provider);
+        if (location == null)
+            Log.e("TAG", "No location");
+
+        List<Double> coorList = loadText();
+
+        new GetWeather().execute(RequestData.apiRequest(String.valueOf(coorList.get(0)), String.valueOf(coorList.get(1))));
 
 //        TextView temp = (TextView) findViewById(R.id.temp);
 //        temp.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
 
 
 //        Log.d("weather", String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(GeneralPage.this, new String[]{
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, MY_PERMISSION);
+            return;
+        }
+        locationManager.requestLocationUpdates(provider, 400, 1, this);
+
+
+    }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        locationManager.removeUpdates(this);
+//    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        locationManager.removeUpdates(this);
+
+        lat = location.getLatitude();
+        lng = location.getLongitude();
+
+        saveText(lat, lng);
+
+        new GetWeather().execute(RequestData.apiRequest(String.valueOf(lat), String.valueOf(lng)));
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
 
     }
 
@@ -118,6 +211,8 @@ public class GeneralPage extends AppCompatActivity {
             ll.setBackgroundResource(pic);
             precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
             setManIcon(darkSkyWeather.getCurrently().getTemperature());
+            cityName = RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), GeneralPage.this);
+            cityNameView.setText(cityName);
 
         }
 
@@ -216,5 +311,23 @@ public class GeneralPage extends AppCompatActivity {
 
         int resId = getResources().getIdentifier(icon, "drawable", getPackageName());
         iconMan.setImageResource(resId);
+    }
+
+    private void saveText(double lt, double ln) {
+        String c = lt + "," + ln;
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(COORDS, c);
+        ed.apply();
+    }
+
+    private List<Double> loadText() {
+        sPref = getPreferences(MODE_PRIVATE);
+        String savedText = sPref.getString(COORDS, "");
+        String[] coordStr = savedText.split(",");
+        List<Double> coordList = new ArrayList<>();
+        coordList.add(Double.parseDouble(coordStr[0]));
+        coordList.add(Double.parseDouble(coordStr[1]));
+        return coordList;
     }
 }
