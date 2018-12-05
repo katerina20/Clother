@@ -39,6 +39,7 @@ public class GeneralPage extends AppCompatActivity {
     private TextView precipText;
     private TextView cityNameView;
     String cityName;
+    private ImageView iconMan;
 
     double lat = 46.4288699298;
     double lng = 30.7232187;
@@ -63,6 +64,7 @@ public class GeneralPage extends AppCompatActivity {
         precipText = (TextView) findViewById(R.id.precip_gen);
         cityNameView = (TextView) findViewById(R.id.city_name_gen);
         ll = (LinearLayout) findViewById(R.id.Layout);
+        iconMan = (ImageView) findViewById(R.id.man_icon_gen);
 
         cityName = RequestData.coordinatesToCity(lat, lng, this);
 
@@ -74,9 +76,9 @@ public class GeneralPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GeneralPage.this, MainActivity.class);
                 intent.putExtra("weather", darkSkyWeather);
-                intent.putExtra("city", cityName);
+                intent.putExtra("city ", cityName);
                 startActivityForResult(intent, 1);
-                overridePendingTransition(R.anim.bottom_in, R.anim.top_out);
+                overridePendingTransition(R.anim.bottom_in, R.anim.static_anim);
             }
         });
 
@@ -115,6 +117,7 @@ public class GeneralPage extends AppCompatActivity {
             int pic = getBackgroundPic(darkSkyWeather.getCurrently().getIcon());
             ll.setBackgroundResource(pic);
             precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
+            setManIcon(darkSkyWeather.getCurrently().getTemperature());
 
         }
 
@@ -189,5 +192,29 @@ public class GeneralPage extends AppCompatActivity {
         int resId = getResources().getIdentifier(back_image, "drawable", getPackageName());;
 
         return resId;
+    }
+
+    private void setManIcon (int t){
+
+        String icon = "";
+
+        if (t >= 25){
+            icon = "first_type";
+        }
+        else if (t >= 20){
+            icon = "second_type";
+        }
+        else if (t >= 15){
+            icon = "third_type";
+        }
+        else if (t >= 5){
+            icon = "forth_type";
+        }
+        else if (t >= -50){
+            icon = "fifth_type";
+        }
+
+        int resId = getResources().getIdentifier(icon, "drawable", getPackageName());
+        iconMan.setImageResource(resId);
     }
 }

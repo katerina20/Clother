@@ -7,4 +7,5 @@
     <color name="colorHumidity">#70BAFE</color>
     <color name="colorGeneralTop">#66bcbcbc</color>
     <color name="textColor">#ffffff</color>
+    <color name="colorDiv">#e2e2e2</color>
 </resources>

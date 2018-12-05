@@ -1,22 +1,13 @@
 package com.example.malut.clother;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
-import android.provider.ContactsContract;
-import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.GridLayoutAnimationController;
-import android.widget.AbsoluteLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,17 +16,13 @@ import android.widget.TableRow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
-import com.example.malut.clother.FontSet.TypefaceUtil;
 import com.example.malut.clother.Model.Daily.DataForWeek;
 import com.example.malut.clother.Model.DarkSkyWeather;
 import com.example.malut.clother.Model.Hourly.DataForDay;
-import com.example.malut.clother.Model.Hourly.Hourly;
 import com.example.malut.clother.Services.RequestData;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView humidity;
     private TextView pressure;
     private TextView city;
+    private ImageButton toSearchWindow;
     double lat = 46.4288699298;
     double lng = 30.7232187;
 
@@ -79,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         humidity = (TextView) findViewById(R.id.humidity);
         pressure = (TextView) findViewById(R.id.pressure);
         city = (TextView) findViewById(R.id.city_gen);
+        toSearchWindow = (ImageButton) findViewById(R.id.burger_button);
 
         todayDate.setText(RequestData.getDateNow());
         temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
@@ -99,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
         hourly_weather_table();
 
         daily_weather_table();
+
+        toSearchWindow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, SearchWindow.class);
+                startActivityForResult(intent, 1);
+                overridePendingTransition(R.anim.slide_inleft, R.anim.static_anim);
+            }
+        });
 
     }
 

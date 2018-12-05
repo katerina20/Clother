@@ -4,10 +4,12 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,7 +23,7 @@ public class RequestData {
     @NonNull
     public static String apiRequest(String lat, String lng){
         StringBuilder sb = new StringBuilder(API_LINK);
-        sb.append(String.format("%s/%s,%s?exclude=minutely,alerts,flags&units=auto", API_KEY, lat, lng));
+        sb.append(String.format("%s/%s,%s?exclude=minutely,alerts,flags&units=ca", API_KEY, lat, lng));
         return sb.toString();
     }
 
@@ -57,6 +59,20 @@ public class RequestData {
         String cityName = addresses.get(0).getLocality();
         return cityName;
 
+    }
+
+    public static List<String> cityToCoordinates(String city, Context c) throws IOException {
+
+        List<String> coord = new ArrayList<>();
+        Geocoder geocoder = new Geocoder(c, Locale.US);
+        List<Address> addresses = geocoder.getFromLocationName(city, 1);
+        Address add = addresses.get(0);
+        coord.add(String.valueOf(add.getLatitude()));
+        coord.add(String.valueOf(add.getLongitude()));
+
+
+
+        return coord;
     }
 
 
