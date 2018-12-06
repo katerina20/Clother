@@ -1,16 +1,17 @@
 package com.example.malut.clother.Model.Hourly;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Hourly {
+public class Hourly implements Serializable {
 
-    private List<DataForDay> dataHourlyList;
+    private List<DataForDay> data;
 
-    public Hourly(List<DataForDay> dataHourlyList) {
-        this.dataHourlyList = dataHourlyList;
+    public Hourly(List<DataForDay> data) {
+        this.data = data;
     }
 
     public List<DataForDay> getDataHourlyList() {
-        return dataHourlyList;
+        return data;
     }
 }

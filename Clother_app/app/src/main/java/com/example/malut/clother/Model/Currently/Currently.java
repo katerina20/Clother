@@ -1,9 +1,11 @@
 package com.example.malut.clother.Model.Currently;
 
-public class Currently {
+import java.io.Serializable;
+
+public class Currently implements Serializable {
 
     private double time;
-    private String summsry;
+    private String summary;
     private String icon;
     private double precipProbability;
     private double temperature;
@@ -12,9 +14,9 @@ public class Currently {
     private double pressure;
     private double windSpeed;
 
-    public Currently(double time, String summsry, String icon, double precipProbability, double temperature, double apparentTemperature, double humidity, double pressure, double windSpeed) {
+    public Currently(double time, String summary, String icon, double precipProbability, double temperature, double apparentTemperature, double humidity, double pressure, double windSpeed) {
         this.time = time;
-        this.summsry = summsry;
+        this.summary = summary;
         this.icon = icon;
         this.precipProbability = precipProbability;
         this.temperature = temperature;
@@ -28,24 +30,24 @@ public class Currently {
         return time;
     }
 
-    public String getSummsry() {
-        return summsry;
+    public String getSummary() {
+        return summary;
     }
 
     public String getIcon() {
         return icon;
     }
 
-    public double getPrecipProbability() {
-        return precipProbability;
+    public int getPrecipProbability() {
+        return (int)precipProbability;
     }
 
-    public double getTemperature() {
-        return temperature;
+    public int getTemperature() {
+        return (int)temperature;
     }
 
-    public double getApparentTemperature() {
-        return apparentTemperature;
+    public int getApparentTemperature() {
+        return (int)apparentTemperature;
     }
 
     public double getHumidity() {

@@ -4,33 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sunny_background"
-    tools:context=".GeneralPage">
+    tools:context=".GeneralPage"
+    android:orientation="vertical"
+    android:background="@drawable/default_back"
+    android:id="@+id/Layout">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:background="@color/colorGeneralTop"
         >
-
-        <ImageView
+        <!--<ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
             android:scaleType="fitXY"
-            android:src="@drawable/rectangle" />
+            android:src="@drawable/rectangle" />-->
 
         <ImageView
             android:id="@+id/icon_main"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/clear_day" />
+            android:layout_centerVertical="true" />
 
         <ImageButton
             android:id="@+id/movePage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
             android:layout_below="@+id/icon_main"
             android:layout_centerHorizontal="true"
             android:background="@null"
@@ -38,11 +41,12 @@
 
         <TextView
             android:id="@+id/temp"
-            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="22°"
             android:textSize="80sp"
+            android:textColor="@color/textColor"
             android:layout_marginTop="0dp"
             android:layout_toLeftOf="@+id/icon_main"
             />
@@ -51,60 +55,94 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:paddingLeft="5dp"
             android:orientation="vertical"
             android:layout_toRightOf="@+id/icon_main">
 
 
             <TextView
+                android:gravity="center"
+                android:id="@+id/city_name_gen"
                 android:layout_width="match_parent"
+                android:textColor="@color/textColor"
                 android:layout_height="wrap_content"
-                android:text="Odessa"
+                android:layout_gravity="bottom"
                 android:textSize="30sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/shirt" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20°"
-                    android:textSize="25sp"/>
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/drop" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/shirt" />
 
-                <TextView
+                    <TextView
+                        android:id="@+id/app_temp_gen"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/textColor"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6%"
-                    android:textSize="25sp"/>
+                    android:layout_gravity="center">
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/drop" />
 
+                    <TextView
+                        android:id="@+id/precip_gen"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"/>
 
-
+                </LinearLayout>
 
             </LinearLayout>
 
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="100dp">
+
+            <ImageView
+                android:id="@+id/man_icon_gen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
 
 
-
-
     </RelativeLayout>
-
-
 
 
 
