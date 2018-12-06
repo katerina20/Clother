@@ -54,11 +54,9 @@ public class FindCityActivity extends AppCompatActivity {
                 Intent intent = new Intent(FindCityActivity.this, SearchWindow.class);
                 startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.slide_inleft, R.anim.static_anim);
+                finish();
             }
         });
-
-
-
     }
 
 

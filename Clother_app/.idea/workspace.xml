@@ -50,23 +50,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+            <state relative-caret-position="153">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralPage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneralPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="94" column="37" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="37" />
+            <state relative-caret-position="344">
+              <caret line="120" column="43" lean-forward="true" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1544044962991" expanded="true" signature="5911:5974" ph="..." />
+                <marker date="1544050554296" expanded="true" signature="6028:6091" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FindCityActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/FindCityActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,10 +87,10 @@
       <file leaf-file-name="SearchWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/SearchWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-64">
-              <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
+            <state relative-caret-position="259">
+              <caret line="161" column="79" selection-start-line="161" selection-start-column="79" selection-end-line="161" selection-end-column="79" />
               <folding>
-                <marker date="1544045446298" expanded="true" signature="4127:4908" ph="..." />
+                <marker date="1544047223893" expanded="true" signature="4127:4908" ph="..." />
               </folding>
             </state>
           </provider>
@@ -2395,14 +2407,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/auto_text_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_search_window.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_find_city.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/FindCityActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/Services/RequestData.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/SearchWindow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/FindCityActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java" />
       </list>
     </option>
   </component>
@@ -2717,21 +2729,21 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5017182" side_tool="true" weight="0.3293556" />
       <window_info anchor="right" id="Preview" order="1" weight="0.21985815" />
-      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49828178" weight="0.27207637" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49828178" visible="true" weight="0.27207637" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32816228" />
       <window_info anchor="bottom" id="Logcat" order="4" weight="0.33333334" />
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.5740072" visible="true" weight="0.24398625" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.5740072" visible="true" weight="0.24398625" />
       <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49965635" weight="0.28038508" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3261131" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="5" sideWeight="0.4259928" side_tool="true" weight="0.40682787" />
       <window_info anchor="right" id="Device File Explorer" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="9" visible="true" weight="0.3579952" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.3579952" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -2778,63 +2790,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java</url>
-          <line>213</line>
-          <properties />
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java</url>
-          <line>214</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java</url>
-          <line>93</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java</url>
-          <line>94</line>
-          <properties />
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java</url>
-          <line>55</line>
-          <properties />
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="68" />
+      <option name="time" value="71" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -3151,16 +3107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/FindCityActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/Services/RequestData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
@@ -3171,31 +3117,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/SearchWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-64">
-          <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
+        <state relative-caret-position="259">
+          <caret line="161" column="79" selection-start-line="161" selection-start-column="79" selection-end-line="161" selection-end-column="79" />
           <folding>
-            <marker date="1544045446298" expanded="true" signature="4127:4908" ph="..." />
+            <marker date="1544047223893" expanded="true" signature="4127:4908" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/FindCityActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/GeneralPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="94" column="37" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="37" />
+        <state relative-caret-position="344">
+          <caret line="120" column="43" lean-forward="true" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1544044962991" expanded="true" signature="5911:5974" ph="..." />
+            <marker date="1544050554296" expanded="true" signature="6028:6091" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/malut/clother/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
         </state>
       </provider>
     </entry>

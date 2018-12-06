@@ -91,8 +91,8 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GeneralPage.this, MainActivity.class);
+                intent.putExtra("city", cityName);
                 intent.putExtra("weather", darkSkyWeather);
-                intent.putExtra("city ", cityName);
                 startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.bottom_in, R.anim.static_anim);
             }
@@ -119,6 +119,8 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             Log.e("TAG", "No location");
 
         List<Double> coorList = loadText();
+
+//        new GetWeather().execute(RequestData.apiRequest(String.valueOf(13.7539800), String.valueOf(100.5014400)));
 
         new GetWeather().execute(RequestData.apiRequest(String.valueOf(coorList.get(0)), String.valueOf(coorList.get(1))));
 

@@ -157,7 +157,7 @@ public class SearchWindow extends AppCompatActivity {
             pd.dismiss();
             Intent intent = new Intent(SearchWindow.this, MainActivity.class);
             intent.putExtra("weather", darkSkyWeather);
-            intent.putExtra("city ", RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), SearchWindow.this));
+            intent.putExtra("city", RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), SearchWindow.this));
             startActivityForResult(intent, 1);
             overridePendingTransition(R.anim.slide_inleft, R.anim.static_anim);
             finish();
