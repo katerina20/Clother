@@ -185,6 +185,7 @@ public class WidgetWeatherProvider extends AppWidgetProvider {
             views.setTextViewText(R.id.widget_city_name, RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), context));
             views.setTextViewText(R.id.widget_precip_gen, String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
             views.setTextViewText(R.id.widget_update_time, "Update " + RequestData.getTimNow());
+            views.setImageViewResource(R.id.widget_man, setManIcon(darkSkyWeather.getCurrently().getTemperature()));
             appWidgetManager.updateAppWidget(appWidgetId, views);
 
         }
@@ -203,5 +204,26 @@ public class WidgetWeatherProvider extends AppWidgetProvider {
             coordList.add(40.730610);
         }
         return coordList;
+    }
+
+    private int setManIcon (int t){
+
+        if (t >= 25){
+            return  R.drawable.first_type;
+        }
+        else if (t >= 20){
+            return  R.drawable.second_type;
+        }
+        else if (t >= 15){
+            return  R.drawable.third_type;
+        }
+        else if (t >= 5){
+            return  R.drawable.forth_type;
+        }
+        else if (t >= -50){
+            return  R.drawable.fifth_type;
+        }
+
+        return R.drawable.first_type;
     }
 }
