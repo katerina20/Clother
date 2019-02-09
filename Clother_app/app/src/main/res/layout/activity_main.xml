@@ -26,14 +26,45 @@
             android:padding="5dp">
 
 
-            <ImageButton
-                android:id="@+id/burger_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/burger_bar">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </ImageButton>
+                <ImageButton
+                    android:id="@+id/burger_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@null"
+                    android:src="@drawable/burger_bar">
+
+                </ImageButton>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right">
+
+                    <FrameLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/back_to_man_button"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:background="@null" />
+
+                        <ImageView android:layout_width="22dp"
+                            android:layout_height="30dp"
+                            android:scaleType="fitXY"
+                            android:rotation="180"
+                            android:src="@drawable/back"
+                            android:layout_gravity="center"/>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/city_gen"
