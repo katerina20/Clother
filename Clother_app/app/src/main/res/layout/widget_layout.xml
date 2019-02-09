@@ -8,131 +8,159 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/widget_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:text="-"
-            android:textColor="@color/textColor"
-            android:textSize="80sp" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="100">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="60"
             android:gravity="center"
             android:orientation="vertical">
 
-
             <TextView
-                android:id="@+id/widget_city_name"
-                android:layout_width="match_parent"
+                android:id="@+id/widget_temp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:text="City"
+                android:layout_marginTop="0dp"
+                android:text="-"
                 android:textColor="@color/textColor"
-                android:textSize="30sp" />
+                android:textSize="80sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/shirt" />
-
-                    <TextView
-                        android:id="@+id/widget_app_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:text="-"
-                        android:textColor="@color/textColor"
-                        android:textSize="25sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/drop" />
-
-                    <TextView
-                        android:id="@+id/widget_precip_gen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:text="-%"
-                        android:textColor="@color/textColor"
-                        android:textSize="25sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right|center"
-                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/widget_update_time"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/widget_city_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
-                    android:text=" Update 07.01, 12.59"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:text="City"
                     android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+                    android:textSize="30sp" />
 
-                <!--<ImageButton-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/shirt" />
+
+                        <TextView
+                            android:id="@+id/widget_app_temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="-"
+                            android:textColor="@color/textColor"
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/drop" />
+
+                        <TextView
+                            android:id="@+id/widget_precip_gen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:text="-%"
+                            android:textColor="@color/textColor"
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/widget_update_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="5dp"
+                        android:text=" Update 07.01, 12.59"
+                        android:textColor="@color/textColor"
+                        android:textSize="13sp" />
+
+                    <!--<ImageButton-->
                     <!--android:id="@+id/widget_button_refresh"-->
                     <!--android:layout_width="15dp"-->
                     <!--android:layout_height="15dp"-->
                     <!--android:scaleType="fitEnd"-->
                     <!--app:srcCompat="@drawable/reload" />-->
 
-                <FrameLayout android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
 
-                    <Button android:id="@+id/widget_button_refresh"
-                        android:layout_width="30dp"
-                        android:background="@null"
-                        android:layout_height="match_parent" />
+                        <Button
+                            android:id="@+id/widget_button_refresh"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:background="@null" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/reload" />
-                </FrameLayout>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/reload" />
+                    </FrameLayout>
 
+
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/widget_man"
+                android:layout_width="206dp"
+                android:layout_height="203dp"
+                android:layout_gravity="center"
+                android:src="@drawable/first_type" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

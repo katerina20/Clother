@@ -191,7 +191,7 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             return;
         }
         if (!RequestData.IF_LOATION_SELECTED) {
-            locationManager.requestLocationUpdates(provider, 400, 1, this);
+            locationManager.requestLocationUpdates(provider, 0, 1, this);
 
         }
 
@@ -334,7 +334,7 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             back_image = "tornado";
         }
 
-        int resId = getResources().getIdentifier(back_image, "drawable", getPackageName());;
+        int resId = getResources().getIdentifier(back_image, "drawable", getPackageName());
 
         return resId;
     }
