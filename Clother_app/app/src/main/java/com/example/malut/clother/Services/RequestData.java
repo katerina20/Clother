@@ -19,6 +19,7 @@ public class RequestData {
 
     public static String API_KEY = "dfc4a3914ba24e771fd68f9f45d30bfb";
     public static String API_LINK = "https://api.darksky.net/forecast/";
+    public static Boolean IF_LOATION_SELECTED = false;
 
     @NonNull
     public static String apiRequest(String lat, String lng){
@@ -36,6 +37,12 @@ public class RequestData {
 
     public static String getDateNow(){
         DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM", Locale.US);
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    public static String getTimNow(){
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.US);
         Date date = new Date();
         return dateFormat.format(date);
     }

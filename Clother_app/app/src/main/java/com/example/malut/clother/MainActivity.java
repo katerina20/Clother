@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView pressure;
     private TextView city;
     private ImageButton toSearchWindow;
+    private Button backToManBtton;
     double lat = 46.4288699298;
     double lng = 30.7232187;
 
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         pressure = (TextView) findViewById(R.id.pressure);
         city = (TextView) findViewById(R.id.city_gen);
         toSearchWindow = (ImageButton) findViewById(R.id.burger_button);
+        backToManBtton = (Button) findViewById(R.id.back_to_man_button);
 
         todayDate.setText(RequestData.getDateNow());
         temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
@@ -100,6 +103,19 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SearchWindow.class);
                 startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.slide_inleft, R.anim.static_anim);
+            }
+        });
+
+        backToManBtton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestData.IF_LOATION_SELECTED = true;
+                Intent intent = new Intent(MainActivity.this, GeneralPage.class);
+                intent.putExtra("city", cityName);
+                intent.putExtra("weather", darkSkyWeather);
+                startActivityForResult(intent, 1);
+                overridePendingTransition(R.anim.static_anim, R.anim.top_in);
+                finish();
             }
         });
 

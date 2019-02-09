@@ -2,18 +2,28 @@ package com.example.malut.clother;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,9 +35,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.malut.clother.FontSet.TypefaceUtil;
 import com.example.malut.clother.Model.DarkSkyWeather;
+import com.example.malut.clother.Services.AlarmReceiver;
 import com.example.malut.clother.Services.NetworkService;
 import com.example.malut.clother.Services.RequestData;
 import com.google.gson.Gson;
@@ -38,6 +50,7 @@ import org.w3c.dom.Text;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class GeneralPage extends AppCompatActivity implements LocationListener {
@@ -52,24 +65,30 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
     String cityName;
     SharedPreferences sPref;
     private ImageView iconMan;
-    final String COORDS = "coords";
+    private static long back_pressed;
 
     LocationManager locationManager;
     String provider;
     static double lat, lng;
     int MY_PERMISSION = 0;
 
+    public static final String APP_PREFERENCES = "coordinates";
+    public static final String APP_PREFERENCES_LNG = "lng";
+    public static final String APP_PREFERENCES_LAT = "lat";
+
     //    double lat = 46.4288699298;
 //    double lng = 30.7232187;
     private DarkSkyWeather darkSkyWeather = new DarkSkyWeather();
-
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sPref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         TypefaceUtil.overrideFont(getApplicationContext(), "SANS_SERIF", "fonts/anaheim.ttf");
         setContentView(R.layout.activity_general_page);
@@ -81,10 +100,6 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
         cityNameView = (TextView) findViewById(R.id.city_name_gen);
         ll = (LinearLayout) findViewById(R.id.Layout);
         iconMan = (ImageView) findViewById(R.id.man_icon_gen);
-
-//        cityName = RequestData.coordinatesToCity(lat, lng, this);
-
-//        cityNameView.setText(cityName);
 
         secondPage = findViewById(R.id.movePage);
         secondPage.setOnClickListener(new View.OnClickListener() {
@@ -98,37 +113,65 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             }
         });
 
-        //Get coordinates
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        provider = locationManager.getBestProvider(new Criteria(), false);
+        if (!RequestData.IF_LOATION_SELECTED){
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //Get coordinates
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            provider = locationManager.getBestProvider(new Criteria(), false);
 
-            ActivityCompat.requestPermissions(GeneralPage.this, new String[]{
-                    Manifest.permission.INTERNET,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_NETWORK_STATE,
-                    Manifest.permission.SYSTEM_ALERT_WINDOW,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-            }, MY_PERMISSION);
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-        if (location == null)
-            Log.e("TAG", "No location");
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-        List<Double> coorList = loadText();
+                ActivityCompat.requestPermissions(GeneralPage.this, new String[]{
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_NETWORK_STATE,
+                        Manifest.permission.SYSTEM_ALERT_WINDOW,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, MY_PERMISSION);
+                return;
+            }
+            Location location = locationManager.getLastKnownLocation(provider);
+            if (location == null)
+                Log.e("TAG", "No location");
+
+            List<Double> coorList = loadText();
 
 //        new GetWeather().execute(RequestData.apiRequest(String.valueOf(13.7539800), String.valueOf(100.5014400)));
 
-        new GetWeather().execute(RequestData.apiRequest(String.valueOf(coorList.get(0)), String.valueOf(coorList.get(1))));
+            new GetWeather().execute(RequestData.apiRequest(String.valueOf(coorList.get(0)), String.valueOf(coorList.get(1))));
+
+        } else{
+            Intent intent = getIntent();
+
+            cityName = intent.getStringExtra("city");
+            darkSkyWeather = (DarkSkyWeather) intent.getExtras().getSerializable("weather");
+            setData(darkSkyWeather);
+        }
+
+
 
 //        TextView temp = (TextView) findViewById(R.id.temp);
 //        temp.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
 
 
 //        Log.d("weather", String.valueOf(darkSkyWeather.getCurrently().getTemperature()));
+
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            finishAffinity();
+            System.exit(0);
+        }
+        else
+            Toast.makeText(getBaseContext(), "Press one more time to exit the app",
+                    Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis();
 
     }
 
@@ -147,8 +190,10 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             }, MY_PERMISSION);
             return;
         }
-        locationManager.requestLocationUpdates(provider, 400, 1, this);
+        if (!RequestData.IF_LOATION_SELECTED) {
+            locationManager.requestLocationUpdates(provider, 400, 1, this);
 
+        }
 
     }
 
@@ -206,15 +251,7 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             Type mType = new TypeToken<DarkSkyWeather>(){}.getType();
             darkSkyWeather = gson.fromJson(s, mType);
             pd.dismiss();
-            temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()) + "°" );
-            setMainIcon(darkSkyWeather.getCurrently().getIcon());
-            temperatureApp.setText(String.valueOf(darkSkyWeather.getCurrently().getApparentTemperature() + "°"));
-            int pic = getBackgroundPic(darkSkyWeather.getCurrently().getIcon());
-            ll.setBackgroundResource(pic);
-            precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
-            setManIcon(darkSkyWeather.getCurrently().getTemperature());
-            cityName = RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), GeneralPage.this);
-            cityNameView.setText(cityName);
+            setData(darkSkyWeather);
 
         }
 
@@ -227,7 +264,6 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
             NetworkService http = new NetworkService();
             json_line = http.getHTTPData(urlString);
 
-
 //            getWeather = new NetworkService();
 //            String s = getWeather.getHTTPData(RequestData.apiRequest(lat, lng));
 
@@ -236,6 +272,18 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
         }
     }
 
+    private void setData (DarkSkyWeather darkSkyWeather){
+
+        temperature.setText(String.valueOf(darkSkyWeather.getCurrently().getTemperature()) + "°" );
+        setMainIcon(darkSkyWeather.getCurrently().getIcon());
+        temperatureApp.setText(String.valueOf(darkSkyWeather.getCurrently().getApparentTemperature() + "°"));
+        int pic = getBackgroundPic(darkSkyWeather.getCurrently().getIcon());
+        ll.setBackgroundResource(pic);
+        precipText.setText(String.valueOf(darkSkyWeather.getCurrently().getPrecipProbability()) + "%");
+        setManIcon(darkSkyWeather.getCurrently().getTemperature());
+        cityName = RequestData.coordinatesToCity(darkSkyWeather.getLatitude(), darkSkyWeather.getLongitude(), GeneralPage.this);
+        cityNameView.setText(cityName);
+    }
     private void setMainIcon (String s){
 
         String icon = s.replace('-', '_');
@@ -316,20 +364,41 @@ public class GeneralPage extends AppCompatActivity implements LocationListener {
     }
 
     private void saveText(double lt, double ln) {
-        String c = lt + "," + ln;
-        sPref = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(COORDS, c);
-        ed.apply();
+
+        SharedPreferences.Editor editor = sPref.edit();
+        editor.putString(APP_PREFERENCES_LAT, String.valueOf(lt));
+        editor.putString(APP_PREFERENCES_LNG, String.valueOf(ln));
+        editor.apply();
+//        String c = lt + "," + ln;
+//        sPref = getPreferences(MODE_PRIVATE);
+//        SharedPreferences.Editor ed = sPref.edit();
+//        ed.putString(COORDS, c);
+//        ed.apply();
+
+
     }
 
     private List<Double> loadText() {
-        sPref = getPreferences(MODE_PRIVATE);
-        String savedText = sPref.getString(COORDS, "");
-        String[] coordStr = savedText.split(",");
+
         List<Double> coordList = new ArrayList<>();
-        coordList.add(Double.parseDouble(coordStr[0]));
-        coordList.add(Double.parseDouble(coordStr[1]));
+        if (sPref.contains(APP_PREFERENCES_LNG)){
+            coordList.add(Double.parseDouble(sPref.getString(APP_PREFERENCES_LAT, "")));
+            coordList.add(Double.parseDouble(sPref.getString(APP_PREFERENCES_LNG, "")));
+        } else {
+            coordList.add(-73.935242);
+            coordList.add(40.730610);
+        }
         return coordList;
+
+//        sPref = getPreferences(MODE_PRIVATE);
+//        String savedText = sPref.getString(COORDS, "");
+//        String[] coordStr = savedText.split(",");
+//        List<Double> coordList = new ArrayList<>();
+//        coordList.add(Double.parseDouble(coordStr[0]));
+//        coordList.add(Double.parseDouble(coordStr[1]));
+//        return coordList;
     }
+
+
+
 }
